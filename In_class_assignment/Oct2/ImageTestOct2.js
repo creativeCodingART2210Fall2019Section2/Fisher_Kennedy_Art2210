@@ -1,7 +1,8 @@
 
-function setup(){
+var image;
 
-    createCanvas(windowWidth, windowHeight);
+function preload(){
+    image = loadimage("Concentration6COM.jpg")
     
  
 }
