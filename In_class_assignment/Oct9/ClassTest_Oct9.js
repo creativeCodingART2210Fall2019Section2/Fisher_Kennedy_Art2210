@@ -1,5 +1,5 @@
 
-var circleRadii = [50,100,150,200,250,300];
+var nums = [50,100,150,200,250,300];
 
 function setup(){
 
@@ -14,8 +14,8 @@ function setup(){
       strokeWeight(4);
       fill(0);
       //push();
-      for(var i = 0; i < circleRadii.length; i++){
-      ellipse(random (1000), random(500), circleRadii[i]);
+      for(var i = 0; i < nums.length; i++){
+      ellipse(random (1000), random(500), nums[i]);
       }
       //pop();
       
