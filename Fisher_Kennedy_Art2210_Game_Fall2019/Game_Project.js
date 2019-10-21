@@ -35,13 +35,13 @@ function keyTyped() {
 	var ry = mouseY +150;
 
   if (key === 'x') {
-		fill(0,255,255);
+		fill("#FF00FF");
 		noStroke()
     triangle(mouseX, mouseY,qx,qy,rx,ry);
 		
 	
 		}else if (key === 'o'){ 
-			fill(255,0,0)
+			fill("#00FF00")
 			noStroke()
 		ellipse(mouseX,mouseY,100,100);
 	}
