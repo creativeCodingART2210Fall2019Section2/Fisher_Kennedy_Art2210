@@ -14,11 +14,13 @@ function setup() {
 	//background(255,175,175); PINK BACKGROUND
 	{
 	//Tic-Tac-Toe lines 
-    strokeWeight(20)	
+	strokeWeight(20)	
 	line(500,70,500,700)
 	line(800,70,800,700)
 	line(200,250,1100,250)
-	line(200,500,1100,500);
+	line(200,500,1100,500)
+
+
 	}
 }
 
