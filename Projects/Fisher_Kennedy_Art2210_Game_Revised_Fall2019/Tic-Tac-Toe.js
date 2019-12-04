@@ -1,56 +1,78 @@
-var Hue = 0;
-var col = {
-r: 255,
-g: 0,
-b: 0
-};
+var grid = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+    ]
+  
+  var turn = 2    //Players that can play
+  var win = false
+  var winner = ""
+  
+  function setup() {
+    createCanvas(600,600);
+    background(100);
+  }
+  
+  function draw() {
+    for (var i=0; i < 3; i++){
+      for (var j=0; j < 3; j++){
+        fill(255)
+        rect(i*200,j*200,200,200)
+        textSize(32)
+        
+        if (grid[j][i] == "O"){
+          fill(255,0,0)
+        }
+        else if (grid[j][i] == "X"){
+          fill(0,0,255)
+        }
+        else{
+          fill(255)
+        }
+        text(grid[j][i], i*200 + 100,j*200 + 100)
+        
+        if ((grid[0][i] == grid[1][i] && grid[0][i] == grid[2][i]) || (grid[j][0] == grid[j][1] && grid[j][0] == grid[j][2]) || (grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2]) || (grid[2][0] == grid[1][1] && grid[1][1] == grid[0][2])){
+          if (win == false){
+            if (turn == 2){
+                winner = "X"
+            }
+            else {
+                winner = "O"
+            }
+            win = true
+          }
+        }
+      }
+    }
+    if (win == true){
+      fill(color(10, 255, 10))
+      textSize(64)
+      text(winner + " wins", 200, 250)
+    }
+  }
+  
+  function mousePressed() {
+    if (win == false){
+      clickX = floor(mouseX/200)
+      clickY = floor(mouseY/200)
+  
+      if (grid[clickY][clickX] != "X" && grid[clickY][clickX] != "O"){
+        if (turn == 1) {
+          grid[clickY][clickX] = "X"
+        }
+        else {
+          grid[clickY][clickX] = "O"
+        }
+        if (turn == 1){
+          turn = 2
+        }
+        else {
+          turn = 1
+        }
+      }
+    }
+  }
 
-function setup() {
-	createCanvas(windowWidth, windowHeight);
-	colorMode(HSB, 90);
-	background(Hue, 90, 90);
-	Hue = (Hue + 0.05) % 100;
-	//HSB colormode
-	//background(255,175,175); PINK BACKGROUND
-	{
-	//Tic-Tac-Toe lines 
-	strokeWeight(20)	
-	line(500,70,500,700)
-	line(800,70,800,700)
-	line(200,250,1100,250)
-	line(200,500,1100,500)
 
-
-	}
-}
-
-function draw(){
-	fill(value)
-	rectangle(700,700,250,500);
-}
-
-function keyTyped() {
-	
-	var qx = mouseX +150;
-	var qy = mouseY +50;
-	var rx = mouseX;
-	var ry = mouseY +150;
-
-  if (key === 'x') {
-		fill("#FF00FF");
-		noStroke()
-    triangle(mouseX, mouseY,qx,qy,rx,ry);
-		
-	
-		}else if (key === 'o'){ 
-			fill("#00FF00")
-			noStroke()
-		ellipse(mouseX,mouseY,100,100);
-	}
-}
-
-function windowResized(){
-
-    resizeCanvas(windowWidth,windowHeight);
- 
-}
+  //Things I need to add
+  // Figure out how to make the game centered and larger
